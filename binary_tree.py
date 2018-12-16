@@ -31,6 +31,45 @@ class BinaryTree:
                 self.insert_node(node.l_child, inserted_node)
 
 
+
+
+    ### ================================================================ ###
+    ### MAX / MIN VALUES                                                 ###
+    ### ================================================================ ###
+
+    def max_value(self):
+        if (not self.root):
+            return False
+        max_value = self.root.value
+        r_child = self.root.r_child
+        while(r_child):
+            max_value = r_child.value
+            r_child = r_child.r_child
+        return max_value
+
+    def min_value(self):
+        if (not self.root):
+            return False
+        min_value = self.root.value
+        l_child = self.root.l_child
+        while(l_child):
+            min_value = l_child.value
+            l_child = l_child.l_child
+        return min_value
+
+
+    ### ================================================================ ###
+    ### MAX / MIN DEPTH                                                  ###
+    ### ================================================================ ###
+
+
+    def max_depth(self):
+        pass
+
+    def min_depth(self):
+        pass
+
+
     ### ================================================================ ###
     ### SEARCH                                                           ###
     ### ================================================================ ###
@@ -50,7 +89,6 @@ class BinaryTree:
         else:
             return self.search_node(node.l_child, value)
 
-    
 
     ### ================================================================ ###
     ### SIZE                                                             ###
@@ -121,6 +159,8 @@ if __name__ == '__main__':
     tree.insert(2)
     tree.insert(4)
     tree.insert(4)
+    tree.insert(12)
+    tree.insert(1)
 
     tree.show()
 
@@ -129,3 +169,5 @@ if __name__ == '__main__':
     print(f'looking for 8 : {tree.search(8)}')
 
     print(f'tree size is: {tree.size()} nodes')
+    print(f'tree max value is: {tree.max_value()}')
+    print(f'tree min value is: {tree.min_value()}')
