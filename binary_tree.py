@@ -56,6 +56,20 @@ class BinaryTree:
     ### SIZE                                                             ###
     ### ================================================================ ###
 
+    def size(self):
+        self.size = 0
+        if (not self.root):
+            return self.size
+        self.count_node(self.root)
+        return self.size
+    
+    def count_node(self, node):
+        self.size += 1
+        if (node.l_child):
+            self.count_node(node.l_child)
+        if (node.r_child):
+            self.count_node(node.r_child)
+        
 
     ### ================================================================ ###
     ### PRINT                                                            ###
@@ -113,3 +127,5 @@ if __name__ == '__main__':
     print(f'looking for 3 : {tree.search(3)}')
     print(f'looking for 5 : {tree.search(5)}')
     print(f'looking for 8 : {tree.search(8)}')
+
+    print(f'tree size is: {tree.size()} nodes')
