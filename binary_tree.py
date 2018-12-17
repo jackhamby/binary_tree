@@ -64,7 +64,21 @@ class BinaryTree:
 
 
     def max_depth(self):
-        pass
+        self.max_depth = 0
+        if (not self.root):
+            return self.max_depth
+        self.traverse_depth(self.root, 0)
+        return self.max_depth
+        
+    def traverse_depth(self, node, current_depth):
+        current_depth += 1
+        if (current_depth > self.max_depth):
+            self.max_depth = current_depth
+        if (node.l_child):
+            self.traverse_depth(node.l_child, current_depth)
+        if (node.r_child):
+            self.traverse_depth(node.r_child, current_depth)
+
 
     def min_depth(self):
         pass
@@ -161,6 +175,7 @@ if __name__ == '__main__':
     tree.insert(4)
     tree.insert(12)
     tree.insert(1)
+    tree.insert(4)
 
     tree.show()
 
@@ -171,3 +186,5 @@ if __name__ == '__main__':
     print(f'tree size is: {tree.size()} nodes')
     print(f'tree max value is: {tree.max_value()}')
     print(f'tree min value is: {tree.min_value()}')
+
+    print(f'tree max depth is: {tree.max_depth()}' )
